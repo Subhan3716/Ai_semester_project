@@ -5,7 +5,7 @@
 # It builds roads, buildings/houses, and traffic zones; computes delivery
 # routes using multiple search algorithms; animates robot movement; and prints
 # algorithm performance metrics.
-
+#subhan
 import argparse
 import heapq
 import math
@@ -554,6 +554,7 @@ def build_algorithm_map() -> Dict[str, SearchFunction]:
         "Greedy Euclidean": create_greedy_wrapper("Euclidean"),
         "A* Manhattan": create_a_star_wrapper("Manhattan"),
         "A* Euclidean": create_a_star_wrapper("Euclidean"),
+       
     }
 
 
