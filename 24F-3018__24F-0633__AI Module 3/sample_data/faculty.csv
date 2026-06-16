@@ -1,0 +1,12 @@
+faculty_id,name,domain,available,max_rooms
+F001,Dr Ahmed Khan,Computer Science,Yes,3
+F002,Dr Sana Malik,Artificial Intelligence,Yes,3
+F003,Dr Umair Iqbal,Business Analytics,Yes,2
+F004,Dr Noor Fatima,Software Engineering,Yes,2
+F005,Dr Bilal Raza,Electrical Engineering,Yes,3
+F006,Dr Hina Ali,Computer Science,Yes,2
+F007,Dr Farah Tariq,Artificial Intelligence,Yes,2
+F008,Dr Kamran Shah,Software Engineering,Yes,2
+F009,Dr Ayesha Siddiqui,Business Analytics,No,2
+F010,Dr Hamza Qureshi,Electrical Engineering,Yes,2
+

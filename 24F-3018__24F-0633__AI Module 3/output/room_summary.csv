@@ -1,0 +1,3 @@
+room_id,capacity,occupied_seats,exams,domains,clusters
+R-101,35,35,Data Structures | Operating Systems | Programming Fundamentals,Artificial Intelligence | Business Analytics | Computer Science | Electrical Engineering | Software Engineering,Data Structures-C1 | Operating Systems-C1 | Programming Fundamentals-C1
+R-102,35,20,Programming Fundamentals,Artificial Intelligence | Business Analytics | Computer Science | Electrical Engineering | Software Engineering,Programming Fundamentals-C1

@@ -1,0 +1,6 @@
+Automated Exam Management Summary
+Total students: 55
+Total exams: 3
+Rooms used: 2
+Seats allocated: 55
+Faculty members assigned: 9

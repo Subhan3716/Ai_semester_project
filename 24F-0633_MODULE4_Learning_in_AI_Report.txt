@@ -1,0 +1,101 @@
+MODULE 4 Learning in AI
+Roll No: 24F-0633
+
+Objective
+Compare the Perceptron Learning Rule and the Gradient Descent Delta Rule on the Iris flower dataset.
+
+Dataset and Protocol
+- Dataset: sklearn Iris dataset (same Fisher Iris dataset referenced in the assignment)
+- Split: 80/20 with stratification
+- Split random state: 2
+- Standardization: train-set mean and standard deviation only
+
+Implementation Notes
+- Perceptron: multiclass perceptron trained from scratch with winner-take-all updates.
+- Delta Rule: one-vs-rest batch gradient descent with from-scratch weight updates.
+- Activation experiments: raw_score/sigmoid/tanh for perceptron; linear/sigmoid/tanh for delta rule.
+
+Perceptron Experiments
+activation   lr      epochs   train_acc   test_acc   final_loss   converged
+--------------------------------------------------------------------------
+raw_score   0.10    800      0.9833      1.0000     0.016667    False    
+raw_score   0.50    800      0.9833      1.0000     0.016667    False    
+raw_score   1.00    800      0.9833      1.0000     0.016667    False    
+sigmoid     0.10    800      0.9833      1.0000     0.016667    False    
+sigmoid     0.50    800      0.9833      1.0000     0.016667    False    
+sigmoid     1.00    800      0.9833      1.0000     0.016667    False    
+tanh        0.10    800      0.9833      1.0000     0.016667    False    
+tanh        0.50    800      0.9833      1.0000     0.016667    False    
+tanh        1.00    800      0.9833      1.0000     0.016667    False    
+
+Delta Rule Experiments
+activation   lr      epochs   train_acc   test_acc   final_loss   converged
+--------------------------------------------------------------------------
+linear      0.01    500      0.8083      0.9667     0.096791    False    
+linear      0.05    500      0.8333      0.9667     0.094284    False    
+linear      0.10    500      0.8333      0.9667     0.093927    False    
+linear      0.50    371      0.8250      0.9333     0.093751    True     
+linear      1.00    500      0.0000      0.0000     inf         False    
+sigmoid     0.01    500      0.8083      0.8667     0.150690    False    
+sigmoid     0.05    500      0.8167      0.9000     0.103737    False    
+sigmoid     0.10    500      0.8250      0.9000     0.092724    False    
+sigmoid     0.50    500      0.8917      1.0000     0.075033    False    
+sigmoid     1.00    500      0.9167      1.0000     0.069949    False    
+tanh        0.01    500      0.8333      0.9333     0.347516    False    
+tanh        0.05    500      0.9083      1.0000     0.285370    False    
+tanh        0.10    500      0.9333      1.0000     0.270152    False    
+tanh        0.50    500      0.9500      1.0000     0.253237    False    
+tanh        1.00    500      0.9583      1.0000     0.250181    False    
+
+Best Perceptron Run
+- Activation: raw_score
+- Learning rate: 0.1
+- Epochs: 800
+- Train accuracy: 0.9833
+- Test accuracy: 1.0000
+- Final loss: 0.016667
+- Notes: Monotonic score transforms preserve class-score ranking, so the multiclass perceptron keeps the same decision boundary here.
+predicted ->     setosa  versicolor   virginica
+setosa               10           0           0
+versicolor            0          10           0
+virginica             0           0          10
+
+Best Delta Rule Run
+- Activation: tanh
+- Learning rate: 1.0
+- Epochs: 500
+- Train accuracy: 0.9583
+- Test accuracy: 1.0000
+- Final loss: 0.250181
+- Notes: Bipolar output that matches one-vs-rest targets well
+predicted ->     setosa  versicolor   virginica
+setosa               10           0           0
+versicolor            0          10           0
+virginica             0           0          10
+
+Reflection Questions
+1. Key differences:
+   The perceptron updates weights only when a sample is misclassified, while the delta rule minimizes
+   a continuous loss using gradient descent. The perceptron is discrete and boundary-focused; the delta
+   rule provides smoother optimization and explicit loss tracking.
+2. Impact of activation functions:
+   In this implementation, monotonic score transforms did not change perceptron predictions because
+   argmax ranking stayed the same. The delta rule was much more sensitive: linear output was the weakest,
+   while sigmoid and tanh reached the strongest test results.
+3. Learning-rate adjustment strategy:
+   Sweep from small to moderate values, keep inputs standardized, and reject unstable rates. This run
+   showed that overly large linear-output updates can diverge, while tanh and sigmoid benefited from
+   larger but still controlled learning rates.
+4. Implications of train/test ratio:
+   The required 80/20 split created 120 training samples and 30 test samples. A larger
+   training share improves learning stability but reduces evaluation depth; a larger test share gives a
+   stronger estimate of generalization but leaves less data for fitting.
+5. Implementation challenges:
+   The main issues were extending binary rules to three classes, matching target encodings with activation
+   ranges, and preventing numerical overflow. These were handled with a multiclass perceptron, one-vs-rest
+   delta targets, standardized features, and clipped sigmoid inputs.
+6. Strengths and limitations observed:
+   The best perceptron run reached train/test accuracy 0.9833/1.0000
+   and learned a strong decision boundary quickly, but it does not optimize a smooth objective. The best
+   delta-rule run reached 0.9583/1.0000, offered more tuning
+   control through activation and learning-rate choice, and exposed optimization behavior through loss values.

@@ -1,0 +1,14 @@
+__pycache__/
+**/__pycache__/
+*.pyc
+.venv/
+**/.venv/
+
+/output/
+/assets/
+/chrome extension/
+/scripts/
+/generate_pdf.py
+/index.html
+/style.css
+/subhan.sql

@@ -1,0 +1,11 @@
+room_id,domain,faculty_id,faculty_name,status
+R-101,Artificial Intelligence,F002,Dr Sana Malik,assigned
+R-101,Business Analytics,F003,Dr Umair Iqbal,assigned
+R-101,Computer Science,F001,Dr Ahmed Khan,assigned
+R-101,Electrical Engineering,F005,Dr Bilal Raza,assigned
+R-101,Software Engineering,F004,Dr Noor Fatima,assigned
+R-102,Artificial Intelligence,F007,Dr Farah Tariq,assigned
+R-102,Business Analytics,F003,Dr Umair Iqbal,assigned
+R-102,Computer Science,F006,Dr Hina Ali,assigned
+R-102,Electrical Engineering,F010,Dr Hamza Qureshi,assigned
+R-102,Software Engineering,F008,Dr Kamran Shah,assigned
